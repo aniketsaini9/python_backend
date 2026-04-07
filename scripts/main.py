@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 import json
 from typing import Optional
-
+ 
 app = FastAPI(title="LILA BLACK Data API")
  
 # ============================================================
