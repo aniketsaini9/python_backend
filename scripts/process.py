@@ -72,7 +72,7 @@ def read_nakama_file(filepath, date_str):
             df.at[idx, 'pixel_x'] = px
             df.at[idx, 'pixel_y'] = py
 
-        df['ts_ms'] = df['ts'].astype('int64') // 1_000_000
+        df['ts_ms'] = df['ts'].astype('int64')
 
         return df
 
