@@ -1,13 +1,30 @@
-# Raw game data — too large, not needed on server
+# Raw game data - too large, not needed on server
 player_data/
 
-# Python cache
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Environment files
+.env
+
+# Python cache and tooling
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# VS Code
+# Editor files
 .vscode/
 
-# Mac
+# OS files
 .DS_Store
+
+# Logs
+*.log
