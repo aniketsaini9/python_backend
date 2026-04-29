@@ -119,3 +119,77 @@ At 10× data scale (~900K events):
 - **Cross-match aggregation** — Identify consistent choke points across many matches vs single-match outliers
 - **Player tracking** — Click a player path to isolate their complete journey and event history
 - **CSV export** — Download filtered event data for external analysis in spreadsheet tools
+
+## Runtime Flow
+
+```text
+Processed parquet data
+    -> output/events.json
+    -> output/matches.json
+    -> output/summary.json
+
+database/database.py
+    -> loads JSON into memory at startup
+
+repositories/telemetry_repository.py
+    -> filters in-memory datasets
+
+services/telemetry_services.py
+    -> validates map/date/timestamp filters
+
+controllers/telemetry_controller.py
+    -> wraps service results with standard response format
+
+routes/telemetry_routes.py
+    -> exposes HTTP endpoints and rate-limit decorators
+
+main.py
+    -> app creation, docs URLs, router registration, middleware, exception handlers
+```
+
+## Folder Structure
+
+```text
+assignment_python_backend/
+|-- main.py
+|-- .env.example
+|-- requirements.txt
+|-- constants/
+|   `-- __init__.py
+|-- controllers/
+|   |-- __init__.py
+|   |-- health_controller.py
+|   `-- telemetry_controller.py
+|-- database/
+|   |-- __init__.py
+|   `-- database.py
+|-- middlewares/
+|   |-- __init__.py
+|   |-- authenticator_middleware.py
+|   |-- exception_handler.py
+|   |-- exceptions.py
+|   `-- logger_middleware.py
+|-- models/
+|   |-- __init__.py
+|   `-- telemetry_model.py
+|-- repositories/
+|   |-- __init__.py
+|   `-- telemetry_repository.py
+|-- routes/
+|   |-- __init__.py
+|   |-- health_routes.py
+|   `-- telemetry_routes.py
+|-- services/
+|   |-- __init__.py
+|   |-- health_services.py
+|   `-- telemetry_services.py
+|-- utils/
+|   |-- __init__.py
+|   |-- helpers.py
+|   |-- rate_limiter_middleware.py
+|   `-- router_config.py
+|-- scripts/
+|   |-- main.py
+|   `-- process.py
+|-- output/
+`-- minimaps/

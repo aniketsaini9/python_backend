@@ -39,21 +39,44 @@ A web-based tool for LILA Games Level Designers to explore player behavior acros
 
 ## Repository Structure
 
-```
-python_backend/               ← Backend repo
-├── scripts/
-│   └── process.py            ← Data pipeline: parquet → JSON
-├── app/
-│   └── main.py               ← FastAPI server
-├── output/                   ← Generated JSON data files
-│   ├── events.json
-│   ├── matches.json
-│   └── summary.json
-├── minimaps/                 ← Minimap images served as static files
-│   ├── AmbroseValley_Minimap.png
-│   ├── GrandRift_Minimap.png
-│   └── Lockdown_Minimap.jpg
-└── requirements.txt
+```text
+assignment_python_backend/
+|-- main.py
+|-- .env.example
+|-- requirements.txt
+|-- constants/
+|-- controllers/
+|   |-- health_controller.py
+|   `-- telemetry_controller.py
+|-- database/
+|   `-- database.py
+|-- middlewares/
+|   |-- authenticator_middleware.py
+|   |-- exception_handler.py
+|   |-- exceptions.py
+|   `-- logger_middleware.py
+|-- models/
+|   `-- telemetry_model.py
+|-- repositories/
+|   `-- telemetry_repository.py
+|-- routes/
+|   |-- health_routes.py
+|   `-- telemetry_routes.py
+|-- services/
+|   |-- health_services.py
+|   `-- telemetry_services.py
+|-- utils/
+|   |-- helpers.py
+|   |-- rate_limiter_middleware.py
+|   `-- router_config.py
+|-- scripts/
+|   |-- main.py
+|   `-- process.py
+|-- output/
+|   |-- events.json
+|   |-- matches.json
+|   `-- summary.json
+`-- minimaps/
 
 Lila_frontend_assignment/     ← Frontend repo
 ├── src/
